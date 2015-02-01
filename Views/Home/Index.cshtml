@@ -1,0 +1,38 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="~/Scripts/jquery-2.1.3.js"></script>
+    <title>Index</title>
+    <script>
+        $.ajax(
+               {
+                   url: '@Url.Action("getData", "Home")',
+                   type: "POST",
+                   success: function (result) {
+                       $.each(result,function(i, v)
+                       {
+                           $('#myScores').append(v);
+                           $('#myScores').append($('<br/>'));
+                       });
+
+                   },
+                   error: function (res) {
+                       alert();
+                   }
+               }
+           );
+    </script>
+
+</head>
+<body>
+    <div id="myScores">
+        
+    </div>
+</body>
+</html>
